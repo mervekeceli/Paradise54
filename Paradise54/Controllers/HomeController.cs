@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Paradise54.Models;
 using System;
@@ -12,6 +14,7 @@ namespace Paradise54.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        FoodManager fm = new FoodManager(new EfFoodRepository());
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -23,9 +26,15 @@ namespace Paradise54.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult FoodDetails()
         {
             return View();
+        }
+
+        public IActionResult Foods()
+        {
+            var values = fm.GetList();
+            return View(values);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
