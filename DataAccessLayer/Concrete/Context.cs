@@ -12,8 +12,8 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("server=MSI;database=PParadise54Db;integrated security=true;");
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=PParadise54Db;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=MSI;database=PParadise54Db;integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=PParadise54Db;integrated security=true;");
         }
         public DbSet<Food> Foods { get; set; }
 
@@ -26,6 +26,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Table> Tables { get; set; }
 
         public DbSet<Menu> Menus { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
 
     }
 }

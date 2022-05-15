@@ -21,5 +21,11 @@ namespace EntityLayer.Concrete
         public double Price { get; set; }
 
         public string Ingredients { get; set; }
+
+        public string Type { get; set; }
+
+        public int CategoryId { get; set;}
+
+        public Category Category { get; set; }
     }
 }
