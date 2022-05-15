@@ -28,7 +28,6 @@ namespace BusinessLayer.Concrete
             return _menuDal.GetListAll();
         }
 
-
         public void TAdd(Menu t)
         {
             _menuDal.Insert(t);

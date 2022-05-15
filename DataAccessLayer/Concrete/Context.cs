@@ -10,11 +10,10 @@ namespace DataAccessLayer.Concrete
 {
     public class Context:DbContext
     {
-
-       
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=MSI;database=Paradise54Db;integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=MSI;database=Paradise54Db;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=PParadise54Db;integrated security=true;");
         }
         public DbSet<Food> Foods { get; set; }
 
@@ -23,8 +22,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<CartItem> CartItems { get; set; }
-
-        public DbSet<Ingredient> Ingredients { get; set; }
 
         public DbSet<Table> Tables { get; set; }
 

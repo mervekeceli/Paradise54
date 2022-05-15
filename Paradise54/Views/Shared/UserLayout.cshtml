@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "UserLayout";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FoodKa - Food Ordering, Delivery & Restuarent Template</title>
+    <!--fivicon icon-->
+    <link rel="icon" href="~/restaurantTheme/assets/img/fevicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/magnific.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/owl.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/slick-slide.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/remixicon/remixicon.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/style.css">
+    <link rel="stylesheet" href="~/restaurantTheme/assets/css/responsive.css">
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Bebas+Neue&family=Satisfy&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+
+</head>
+<body class='sc5'>
+
+    <!-- preloader area end -->
+    <!-- search popup area start -->
+    <div class="body-overlay" id="body-overlay"></div>
+    <div class="td-search-popup" id="td-search-popup">
+        <form action="index.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- //. search Popup -->
+
+    @await Html.PartialAsync("PartialHeader")
+
+    <!-- bredcrumb Area Start-->
+    <section class="breadcrumb-area">
+        <div class="banner-bg-img"></div>
+        <div class="banner-shape-1"><img src="~/restaurantTheme/assets/img/banner/shape-1.png" alt="img"></div>
+        <div class="banner-shape-2"><img src="~/restaurantTheme/assets/img/banner/shape-2.png" alt="img"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 align-self-center">
+                    <div class="banner-inner text-center">
+                        <h3>
+                            Choose you items
+                        </h3>
+                        <h1>SHOP PAGE</h1>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb Area End -->
+    @RenderBody()
+
+    <!---Footer Partial Dahil etme-->
+    @await Html.PartialAsync("PartialFooter")
+
+    <!-- back-to-top end -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+    </div>
+
+
+
+    <!-- all plugins here -->
+    <script src="~/restaurantTheme/assets/js/jquery.3.6.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/jquery-ui.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/bootstrap.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/imageloded.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/counterup.js"></script>
+    <script src="~/restaurantTheme/assets/js/waypoint.js"></script>
+    <script src="~/restaurantTheme/assets/js/magnific.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/nice-select.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/fontawesome.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/owl.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/slick-slider.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/wow.min.js"></script>
+    <script src="~/restaurantTheme/assets/js/tweenmax.min.js"></script>
+
+    <!-- main js  -->
+    <script src="~/restaurantTheme/assets/js/main.js"></script>
+</body>
+</html>
+
+@RenderBody()
+

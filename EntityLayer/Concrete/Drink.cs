@@ -15,6 +15,8 @@ namespace EntityLayer.Concrete
         public string Name { get; set; }
         public string Photo { get; set; }
 
+        public double Price { get; set; }
+
         [NotMapped]
         public IFormFile MainPhotoFile { get; set; }
 

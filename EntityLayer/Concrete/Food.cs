@@ -21,6 +21,8 @@ namespace EntityLayer.Concrete
 
         public bool Active { get; set; }
 
-        public IEnumerable<FoodIngredients> FoodIngredients { get; set; }
+        public double Price { get; set; }
+
+        public string Ingredients { get; set; }
     }
 }

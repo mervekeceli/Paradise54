@@ -87,6 +87,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.ToTable("Drinks");
@@ -102,55 +105,21 @@ namespace DataAccessLayer.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Ingredients")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.ToTable("Foods");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.FoodIngredients", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FoodId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IngredientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FoodId");
-
-                    b.HasIndex("IngredientId");
-
-                    b.ToTable("FoodIngredients");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Ingredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("EntityLayer.Concrete.Menu", b =>
@@ -240,25 +209,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Food");
                 });
 
-            modelBuilder.Entity("EntityLayer.Concrete.FoodIngredients", b =>
-                {
-                    b.HasOne("EntityLayer.Concrete.Food", "Food")
-                        .WithMany("FoodIngredients")
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EntityLayer.Concrete.Ingredient", "Ingredient")
-                        .WithMany("FoodIngredients")
-                        .HasForeignKey("IngredientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Food");
-
-                    b.Navigation("Ingredient");
-                });
-
             modelBuilder.Entity("EntityLayer.Concrete.Menu", b =>
                 {
                     b.HasOne("EntityLayer.Concrete.Drink", "Drink")
@@ -276,16 +226,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Drink");
 
                     b.Navigation("Food");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Food", b =>
-                {
-                    b.Navigation("FoodIngredients");
-                });
-
-            modelBuilder.Entity("EntityLayer.Concrete.Ingredient", b =>
-                {
-                    b.Navigation("FoodIngredients");
                 });
 #pragma warning restore 612, 618
         }
