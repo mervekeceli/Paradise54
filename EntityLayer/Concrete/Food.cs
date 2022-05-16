@@ -19,6 +19,7 @@ namespace EntityLayer.Concrete
         public bool Active { get; set; }
 
         public double Price { get; set; }
+        public double Stock { get; set; }
 
         public string Ingredients { get; set; }
 
