@@ -2,8 +2,8 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,11 +13,12 @@ using System.Threading.Tasks;
 
 namespace Paradise54.Controllers
 {
-  
+    
     public class FoodController : Controller
     {
         FoodManager fm = new FoodManager(new EfFoodRepository());
-     
+
+        
         public IActionResult Index()
         {
             var values = fm.GetFoodListWithCategory();
