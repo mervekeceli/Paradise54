@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Paradise54.Controllers
 {
+  
     public class FoodController : Controller
     {
         FoodManager fm = new FoodManager(new EfFoodRepository());
@@ -51,10 +54,19 @@ namespace Paradise54.Controllers
         //}
         public IActionResult Index()
         {
-            var values = fm.GetList();
+            var values = fm.GetFoodListWithCategory();
             return View(values);
         }
-
+        public Category GetCategory(string categoryName)
+        {
+            
+            using (var c = new Context())
+            {
+                var values = c.Categories.Where(x => x.Name==categoryName).FirstOrDefault();
+                return values;
+            }
+            
+        }
         public async Task<ViewResult> AddFoodwithAPIAsync()
         {
 
@@ -66,7 +78,7 @@ namespace Paradise54.Controllers
                 RequestUri = new Uri("https://6280b7d51020d8520580af3e.mockapi.io/api/paradise54/foods"),
 
             };
-            List<Food> myDeserializedClass;
+            List<FoodCopy> myDeserializedClass;
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();
@@ -74,7 +86,7 @@ namespace Paradise54.Controllers
 
                 dynamic obj = JsonConvert.DeserializeObject(body);
 
-                myDeserializedClass = JsonConvert.DeserializeObject<List<Food>>(body);
+                myDeserializedClass = JsonConvert.DeserializeObject<List<FoodCopy>>(body);
 
 
             }
@@ -85,6 +97,8 @@ namespace Paradise54.Controllers
                 f.Photo = myDeserializedClass[i].Photo;
                 f.Price = myDeserializedClass[i].Price;
                 f.Ingredients = myDeserializedClass[i].Ingredients;
+                f.Type = myDeserializedClass[i].Type;
+                f.CategoryId= GetCategory(myDeserializedClass[i].Category).Id;
                 f.Active = myDeserializedClass[i].Active;
 
                 fm.TAdd(f);

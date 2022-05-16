@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IFoodService : IGenericService<Food>
     {
+        List<Food> GetFoodListWithCategory();
+
     }
 }

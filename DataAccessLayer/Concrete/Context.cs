@@ -17,8 +17,6 @@ namespace DataAccessLayer.Concrete
         }
         public DbSet<Food> Foods { get; set; }
 
-        public DbSet<Drink> Drinks { get; set; }
-
         public DbSet<Cart> Carts { get; set; }
 
         public DbSet<CartItem> CartItems { get; set; }

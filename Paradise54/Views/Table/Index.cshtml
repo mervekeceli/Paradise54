@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<Food>
+@model List<Table>
 @{
     Layout = null;
 }
@@ -14,12 +14,9 @@
     <table class="table table-bordered">
         <tr>
             <th>ID</th>
-            <th>Yemek Adi</th>
-            <th>Yemek Turu</th>
-            <th>Fiyat</th>
-            <th>Malzeme</th>
-            <th>Kategori</th>
-            <th>Durum</th>
+            <th>Masa Adi</th>
+            <th>Status</th>
+            <th>Aktiflik</th>
             <th>Detay</th>
             <th>Sil</th>
         </tr>
@@ -28,10 +25,7 @@
             <tr>
                 <td>@item.Id</td>
                 <td>@item.Name</td>
-                <td>@item.Type</td>
-                <td>@item.Price</td>
-                <td>@item.Category.Name</td>
-                <td>@item.Ingredients</td>
+                <td>@item.Status</td>
                 <td>@item.Active</td>
                 <td><a href="#" class="btn btn-warning">Detaylar</a></td>
                 <td><a href="#" class="btn btn-danger">Sil</a></td>

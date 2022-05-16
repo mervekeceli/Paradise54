@@ -8,18 +8,23 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Drink
+    public class FoodCopy
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
+
         public string Photo { get; set; }
+
+        public bool Active { get; set; }
 
         public double Price { get; set; }
 
-        [NotMapped]
-        public IFormFile MainPhotoFile { get; set; }
+        public string Ingredients { get; set; }
 
-        public bool Active { get; set; }
+        public string Type { get; set; }
+        public string Category { get; set; }
+
+
     }
 }

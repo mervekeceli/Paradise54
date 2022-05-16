@@ -21,6 +21,14 @@ namespace BusinessLayer.Concrete
         {
             return _foodDal.GetById(id);
         }
+        public List<Food> GetFoodById(int id)
+        {
+            return _foodDal.GetListAll(x => x.Id == id);
+        }
+        public List<Food> GetFoodListWithCategory()
+        {
+            return _foodDal.GetListwithCategory();
+        }
 
         public List<Food> GetList()
         {
