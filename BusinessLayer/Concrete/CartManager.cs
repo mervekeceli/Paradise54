@@ -25,7 +25,15 @@ namespace BusinessLayer.Concrete
         {
             return _cartDal.GetListAll();
         }
-
+        public List<Cart> GetCartById(int id)
+        {
+            return _cartDal.GetListAll(x => x.Id == id);
+        }
+        public Cart GetCartByTablenum(int tablenum)
+        {
+            return _cartDal.GetListAll(x => x.TableId == tablenum).FirstOrDefault();
+        }
+     
         public void TAdd(Cart t)
         {
             _cartDal.Insert(t);
