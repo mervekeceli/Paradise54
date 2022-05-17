@@ -48,5 +48,9 @@ namespace BusinessLayer.Concrete
         {
             _cartDal.Update(t);
         }
+        public Cart GetCartListFilter(int tableNum)
+        {
+            return _cartDal.GetListFilter(tableNum);
+        }
     }
 }

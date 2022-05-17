@@ -1,5 +1,5 @@
 ﻿@using EntityLayer.Concrete
-@model List<Cart>
+@model List<CartItem>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -111,8 +111,8 @@
         {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.Table.Name</td>
-                <td>@item.Status</td>
+                <td>@item.Cart.Table.Name</td>
+                <td>@item.Cart.Status</td>
                 <td>@item.Active</td>
                 <td><a href="#" class="btn btn-warning">Detaylar</a></td>
                 <td><a href="#" class="btn btn-danger">Sil</a></td>

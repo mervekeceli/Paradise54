@@ -13,18 +13,15 @@ namespace Paradise54.Controllers
 {
     public class CartController : Controller
     {
+        FoodManager fm = new FoodManager(new EfFoodRepository());
         CartManager cm = new CartManager(new EfCartRepository());
-        private readonly Context _context;
-       
-        public CartController(Context context)
+        CartItemManager cim = new CartItemManager(new EfCartItemRepository());
+
+
+        public IActionResult Index(int tableNum)
         {
-            _context = context;
-        }
-        public async Task<IActionResult> Index(int tablenum)
-        {
-            Cart cart = _context.Carts
-                .Where(x => x.TableId == tablenum && x.Active == true)
-                .FirstOrDefault();
+            Cart cart = cm.GetCartListFilter(tableNum);
+
 
             if (cart == null)
             {
@@ -32,21 +29,15 @@ namespace Paradise54.Controllers
                 {
                     Status = "YENI",
                     Active = true,
-                    TableId = tablenum
+                    TableId = tableNum
                 };
+                cm.TAdd(newCart);
 
-                _context.Add(newCart);
-                _context.SaveChanges();
             }
             else
             {
 
-                List<CartItem> cartItems = await _context.CartItems
-                    .Include(x => x.Cart)
-                    .Where(x => x.Cart.TableId == tablenum && x.Cart.Active == true && x.Active == true)
-                    .Include(x => x.Food).ToListAsync();
-
-
+                List<CartItem> cartItems = cim.GetCartItemListwithFoodCartIncludeFilter(tableNum);
 
                 if (cartItems.Count != 0)
                 {
@@ -56,20 +47,22 @@ namespace Paradise54.Controllers
                 }
             }
 
+
+
+
+
+
             return View();
         }
-        public async Task<IActionResult> Order(int? cartId)
+        public IActionResult Order(int cartId)
         {
-            Cart cart = await _context.Carts
-                .Where(x => x.Id == cartId)
-                .FirstOrDefaultAsync();
+
+            Cart cart = cm.GetById(cartId);
 
             if (cart != null)
             {
-                List<CartItem> cartItem = await _context.CartItems
-                    .Include(x => x.Food)
-                    .Where(x => x.CartId == cartId && x.Active == true)
-                    .ToListAsync();
+
+                List<CartItem> cartItem = cim.GetListwithFoodCartIdIncludeFilterCartItems(cartId);
 
                 for (int i = 0; i < cartItem.Count; i++)
                 {
@@ -81,20 +74,23 @@ namespace Paradise54.Controllers
                         {
                             Food tmpFood = cartItem[i].Food;
                             tmpFood.Stock++;
-                            _context.Update(tmpFood);
+
+                            fm.TUpdate(tmpFood);
+                           
                         }
 
                         return RedirectToAction("Index", "Cart");
                     }
 
                     _food.Stock = _food.Stock - 1;
-                    _context.Update(_food);
+                    fm.TUpdate(_food);
+
                 }
 
                 cart.Active = false;
                 cart.Status = "TAMAMLANDI";
-                _context.Update(cart);
-                await _context.SaveChangesAsync();
+                cm.TUpdate(cart);
+
             }
 
             return RedirectToAction("Index", "Cart");

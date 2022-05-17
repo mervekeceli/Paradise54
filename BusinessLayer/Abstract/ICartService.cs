@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ICartService : IGenericService<Cart>
     {
+        public Cart GetCartListFilter(int tableNum);
     }
 }

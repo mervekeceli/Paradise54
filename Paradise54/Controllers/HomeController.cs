@@ -19,15 +19,14 @@ namespace Paradise54.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly Context _context;
         FoodManager fm = new FoodManager(new EfFoodRepository());
         CartManager cm = new CartManager(new EfCartRepository());
         CartItemManager cim = new CartItemManager(new EfCartItemRepository());
 
-        public HomeController(/*Context context*/ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            //_context = context;
+            
         }
 
         public IActionResult Index()
@@ -49,15 +48,7 @@ namespace Paradise54.Controllers
         public IActionResult AddFoodToCart(int foodId, int tableNum)
         {
 
-
-            //var cart = await _context.Carts
-            //      .Where(x => x.TableId == tableNum && x.Active == true)
-            //     .FirstOrDefaultAsync();
-
-            var cart = cm.GetCartByTablenum(tableNum);
-            //Food currentFood = await _context.Foods
-            //      .Where(x => x.Id == foodId && x.Active == true)
-            //      .FirstOrDefaultAsync();
+            var cart = cm.GetById(tableNum);
             Food currentFood = fm.GetById(foodId);
 
             if (currentFood == null) return NotFound();
@@ -73,8 +64,6 @@ namespace Paradise54.Controllers
                 };
                 cim.TAdd(newCartItem);
 
-                //_context.Add(newBasketItem);
-                //await _context.SaveChangesAsync();
             }
             else
             {
@@ -85,8 +74,6 @@ namespace Paradise54.Controllers
                     TableId = tableNum
                 };
                 cm.TAdd(newCart);
-                //_context.Add(newCart);
-                //_context.SaveChanges();
 
                 CartItem newCartItem = new CartItem
                 {
@@ -95,11 +82,9 @@ namespace Paradise54.Controllers
                     Active = true
                 };
                 cim.TAdd(newCartItem);
-                //_context.Add(newCartItem);
-                //await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction("Foods", "Home");
+            return RedirectToAction("Index", "Cart", new { tableNum = tableNum });
         }
 
 

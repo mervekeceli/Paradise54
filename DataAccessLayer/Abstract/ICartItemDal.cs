@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICartItemDal : IGenericDal<CartItem>
     {
+        public List<CartItem> GetListwithFoodCartIncludeFilter(int tableNum);
+
+        public List<CartItem> ListwithFoodCartIdIncludeFilterCartItems(int cartId);
     }
 }
