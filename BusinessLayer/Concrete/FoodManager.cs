@@ -49,5 +49,19 @@ namespace BusinessLayer.Concrete
         {
             _foodDal.Update(t);
         }
+        public List<Food> GetFoodListwithCategoryWithFilter(List<Food> foods, string catName)
+        {
+            return _foodDal.GetListwithCategoryWithFilter(foods,catName);
+        }
+
+        public List<Food> GetSearchFoods(string searchItem)
+        {
+            return _foodDal.SearchFoods(searchItem);
+        }
+
+        public bool TExistss(int id)
+        {
+            return _foodDal.TExists(x => x.Id == id);
+        }
     }
 }

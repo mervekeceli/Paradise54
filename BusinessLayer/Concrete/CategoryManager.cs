@@ -36,9 +36,15 @@ namespace BusinessLayer.Concrete
             _categoryDal.Delete(t);
         }
 
+        public bool TExistss(int id)
+        {
+            return _categoryDal.TExists(x => x.Id == id);
+        }
+
         public void TUpdate(Category t)
         {
             _categoryDal.Update(t);
         }
+
     }
 }

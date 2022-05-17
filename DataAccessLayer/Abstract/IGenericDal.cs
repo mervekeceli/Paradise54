@@ -20,5 +20,9 @@ namespace DataAccessLayer.Abstract
         T GetById(int id);
 
         List<T> GetListAll(Expression<Func<T, bool>> filter);
+
+        bool TExists(Expression<Func<T, bool>> filter);
+
+        
     }
 }

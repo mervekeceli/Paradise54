@@ -17,6 +17,8 @@ namespace BusinessLayer.Abstract
         List<T> GetList();
 
         T GetById(int id);
+
+        bool TExistss(int id);
     }
 
 }

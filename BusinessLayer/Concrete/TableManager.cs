@@ -41,5 +41,10 @@ namespace BusinessLayer.Concrete
         {
             _tableDal.Update(t);
         }
+        public bool TExistss(int id)
+        {
+            return _tableDal.TExists(x => x.Id == id);
+        }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿@model List<EntityLayer.Concrete.Food>
-
+@using Microsoft.AspNetCore.Http.Extensions
 @{
     ViewData["Title"] = "Foods";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -22,7 +22,7 @@
                     <div class="col-sm-6 align-self-center pb-4">
                         <select class="single-select float-sm-end">
                             <option>Kategoriler</option>
-                            <option value="asc">Pizza</option>
+                            <option value="asc"></option>
                             <option value="desc">Burger</option>
                             <option value="pop">Döner</option>
                         </select>
@@ -57,7 +57,7 @@
                                 <div class="btn-area">
                                     <form asp-action="AddFoodToCart" asp-controller="Home" method="get">
                                         @*<input type="hidden" asp-for="@item.Id" />
-                                        <input type="hidden" asp-for="@tablenum" />*@
+                                            <input type="hidden" asp-for="@tablenum" />*@
                                         @*<a class="btn btn-secondary" href="foodId=@item.Id&tablenum=@tablenum">Sepete Ekle burda iki param </a>*@
                                         <a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@item.Id&tableNum=@tablenum">Sepete Ekle</a>
                                     </form>
@@ -81,12 +81,11 @@
                     <div class="widget widget_categories style-2">
                         <h4 class="widget-title">Categories</h4>
                         <ul>
-                            <li><a href="/Admin/Index/"><img src="~/restaurantTheme/assets/img/category/1.png" alt="img"> Ramen <span>(5)</span></a></li>
-                            <li><a href="#"><img src="~/restaurantTheme/assets/img/category/2.png" alt="img"> Pizza <span>(9)</span> </a></li>
-                            <li><a href="#"><img src="~/restaurantTheme/assets/img/category/3.png" alt="img"> Burger <span>(18)</span></a></li>
-                            <li><a href="#"><img src="~/restaurantTheme/assets/img/category/4.png" alt="img"> French fries <span>(14)</span></a></li>
-                            <li><a href="#"><img src="~/restaurantTheme/assets/img/category/5.png" alt="img"> Fast food <span>(10)</span></a></li>
-                            <li><a href="#"><img src="~/restaurantTheme/assets/img/category/6.png" alt="img"> Soft drinks <span>(28)</span></a></li>
+                            @foreach (var item in ViewBag.Kategoriler)
+                            {
+
+                                <li><a href="@Context.Request.GetDisplayUrl()?catName=@item"><img src="~/restaurantTheme/assets/img/category/2.png" alt="img">@item<span>(9)</span></a></li>
+                            }
                         </ul>
                     </div>
                     <div class="widget widget_filter">

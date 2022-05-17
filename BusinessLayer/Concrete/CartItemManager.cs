@@ -54,5 +54,10 @@ namespace BusinessLayer.Concrete
         {
             return _cartItemDal.ListwithFoodCartIdIncludeFilterCartItems(cartId);
         }
+
+        public bool TExistss(int id)
+        {
+            return _cartItemDal.TExists(x => x.Id == id);
+        }
     }
 }

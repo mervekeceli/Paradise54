@@ -38,6 +38,8 @@ namespace Paradise54
                                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+
+
             
         }
 

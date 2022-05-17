@@ -39,11 +39,37 @@ namespace Paradise54.Controllers
             return View();
         }
 
-        public IActionResult Foods()
+        public IActionResult Foods(string? catName,string? searchItem)
         {
-            var values = fm.GetList();
+           
+            var values = fm.GetFoodListWithCategory();
+            if (!string.IsNullOrEmpty(catName))
+            {
+                values = fm.GetFoodListwithCategoryWithFilter(values, catName);
+            }
+            if(!string.IsNullOrEmpty(searchItem))
+            {
+                values = fm.GetSearchFoods(searchItem);
+            }
+            List<string> _categories = new List<string>();
+            foreach (var item in values)
+            {
+                _categories.Add(item.Category.Name);
+            }
+            _categories = _categories.Distinct().ToList();
+
+            ViewBag.Kategoriler = _categories;
+           
             return View(values);
         }
+
+        public IActionResult SearchProducts(string searchItem)
+        {
+            var foods = fm.GetSearchFoods(searchItem);
+            return View(foods);
+        }
+
+
 
         public IActionResult AddFoodToCart(int foodId, int tableNum)
         {

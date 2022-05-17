@@ -10,5 +10,11 @@ namespace DataAccessLayer.Abstract
     public interface IFoodDal:IGenericDal<Food>
     {
         List<Food> GetListwithCategory();
+
+        List<Food> GetListwithCategoryWithFilter(List<Food> foods, string catName);
+
+
+        List<Food> SearchFoods(string searchItem);
     }
+
 }

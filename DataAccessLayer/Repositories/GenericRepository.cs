@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,5 +50,13 @@ namespace DataAccessLayer.Repositories
             c.Update(t);
             c.SaveChanges();
         }
+
+        public bool TExists(Expression<Func<T, bool>> filter)
+        {
+            using var c = new Context();
+            return c.Set<T>().Any(filter);
+           
+        }
+      
     }
 }

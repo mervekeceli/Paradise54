@@ -20,5 +20,21 @@ namespace DataAccessLayer.EntityFramework
                 return c.Foods.Include(x => x.Category).ToList();
             }
         }
+
+        
+
+        public List<Food> GetListwithCategoryWithFilter(List<Food> foods, string catName)
+        {
+            return foods.Where(x => x.Category.Name == catName).ToList();
+            
+        }
+        public List<Food> SearchFoods(string searchItem)
+        {
+            using(var c=new Context())
+            {
+                return c.Foods.Include(x=>x.Category).Where(x => x.Name.ToLower().Contains(searchItem.ToLower())).ToList();
+            }
+        }
+
     }
 }

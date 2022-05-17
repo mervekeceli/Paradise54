@@ -95,5 +95,7 @@ namespace Paradise54.Controllers
 
             return RedirectToAction("Index", "Cart");
         }
+
+        
     }
 }
