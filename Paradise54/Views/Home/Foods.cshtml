@@ -55,11 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-area">
-                                    <form asp-action="AddFoodToCart" asp-controller="Home" method="get">
-                                        @*<input type="hidden" asp-for="@item.Id" />
-                                            <input type="hidden" asp-for="@tablenum" />*@
-                                        @*<a class="btn btn-secondary" href="foodId=@item.Id&tablenum=@tablenum">Sepete Ekle burda iki param </a>*@
-                                        <a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@item.Id&tableNum=@tablenum">Sepete Ekle</a>
+                                    <form asp-action="AddFoodToCart" asp-controller="Home" method="get"><a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@item.Id&tableNum=@tablenum">Sepete Ekle</a>
                                     </form>
 
                                 </div>
