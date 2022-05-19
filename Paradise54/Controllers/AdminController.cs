@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Paradise54.Controllers
 {
-    [AllowAnonymous]
     public class AdminController : Controller
     {
         public IActionResult Index()

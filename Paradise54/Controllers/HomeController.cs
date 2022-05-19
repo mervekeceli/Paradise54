@@ -26,7 +26,6 @@ namespace Paradise54.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            
         }
 
         public IActionResult Index()
@@ -73,7 +72,6 @@ namespace Paradise54.Controllers
 
         public IActionResult AddFoodToCart(int foodId, int tableNum)
         {
-
             var cart = cm.GetById(tableNum);
             Food currentFood = fm.GetById(foodId);
 

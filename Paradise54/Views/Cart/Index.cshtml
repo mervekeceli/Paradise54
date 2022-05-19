@@ -4,6 +4,29 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
+
+<!-- bredcrumb Area Start-->
+<section class="breadcrumb-area">
+    <div class="banner-bg-img"></div>
+    <div class="banner-shape-1"><img src="~/restaurantTheme/assets/img/banner/shape-1.png" alt="img"></div>
+    <div class="banner-shape-2"><img src="~/restaurantTheme/assets/img/banner/shape-2.png" alt="img"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 align-self-center">
+                <div class="banner-inner text-center">
+                    <h1>SEPETİM</h1>
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home.html">Anasayfa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Sepet</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Area End -->
 <!----Sepet işlemleri-->
 <!-- cart area start -->
 <div class="cart-area pd-top-120 pd-bottom-120">
@@ -26,30 +49,31 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                <tr>
-                    <td class="table-close-btn"><a href="#"><i class="ri-close-line"></i></a></td>
-                    <th scope="row">
+                                <tr>
+                                    <td class="table-close-btn"><a href="#"><i class="ri-close-line"></i></a></td>
+                                    <th scope="row">
 
-                        <div class="thumb">
-                            <img src="@item.Food.Photo" style="width: auto; height: 90px;" alt="img">
-                        </div>
-                    </th>
-                    <td colspan="2" class="item-name">
-                        <div class="details">
-                            <h5>@item.Food.Name</h5>
-                        </div>
-                    </td>
-                    <td>₺ @item.Food.Price</td>
-                    <td class="table-quantity">
-                        <form>
-                            <div class="quantity buttons_added">
-                                <input type="number" class="input-text qty text" step="1" min="1" max="10000" name="quantity" value="1">
+                                        <div class="thumb">
+                                            <img src="@item.Food.Photo" style="width: auto; height: 90px;" alt="img">
+                                        </div>
+                                    </th>
+                                    <td colspan="2" class="item-name">
+                                        <div class="details">
+                                            <h5>@item.Food.Name</h5>
+                                        </div>
+                                    </td>
+                                    <td>₺ @item.Food.Price</td>
+                                    <td class="table-quantity">
+                                        <form>
+                                            <div class="quantity buttons_added">
+                                                <input type="number" class="input-text qty text" step="1" min="1" max="10000" name="quantity" value="1">
 
-                            </div>
-                        </form>
-                    </td>
-                    <td>₺ @item.Food.Price</td>
-                </tr>}
+                                            </div>
+                                        </form>
+                                    </td>
+                                    <td>₺ @item.Food.Price</td>
+                                </tr>
+}
                         </tbody>
                     </table>
                 </div>

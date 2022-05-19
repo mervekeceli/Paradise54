@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace Paradise54.Controllers
 {
-    [AllowAnonymous]
     public class TableController : Controller
     {
         TableManager tm = new TableManager(new EfTableRepository());
@@ -22,8 +21,6 @@ namespace Paradise54.Controllers
         }
         public IActionResult Details(int id)
         {
-
-
             //var mainCategory = await _context.MainCategories
             // .FirstOrDefaultAsync(m => m.Id == id);
             var table = tm.GetById(id);

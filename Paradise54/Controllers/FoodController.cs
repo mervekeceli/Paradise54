@@ -21,7 +21,6 @@ namespace Paradise54.Controllers
         FoodManager fm = new FoodManager(new EfFoodRepository());
         CategoryManager cm = new CategoryManager(new EfCategoryRepository());
 
-
         
         public IActionResult Index()
         {
@@ -80,8 +79,6 @@ namespace Paradise54.Controllers
 
         public IActionResult Details(int id)
         {
-            
-
             //var brand = await _context.Brands.Include(b => b.ApplicationUser)
             //    .FirstOrDefaultAsync(m => m.Id == id);
             var food = fm.GetById(id);
@@ -92,6 +89,8 @@ namespace Paradise54.Controllers
 
             return View(food);
         }
+
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -99,6 +98,8 @@ namespace Paradise54.Controllers
             ViewData["CategoryId"] = new SelectList(cm.GetList().Where(x => x.Active == true), "Id", "Name");
             return View();
         }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Id,Name,Photo,Price,Stock,Ingredients,Type,Active")] Food food)
@@ -113,6 +114,7 @@ namespace Paradise54.Controllers
             return View(food);
         }
 
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -125,8 +127,6 @@ namespace Paradise54.Controllers
 
             return View(food);
         }
-
-
 
 
         [HttpPost]
@@ -160,6 +160,7 @@ namespace Paradise54.Controllers
             }
             return View(food);
         }
+
 
 
         [HttpGet]

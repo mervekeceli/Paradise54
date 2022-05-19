@@ -1,3 +1,5 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,12 +27,22 @@ namespace Paradise54
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<AppUser, AppRole>(x=> 
+            {
+                x.Password.RequireUppercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+            })
+                .AddEntityFrameworkStores<Context>();
+
+            services.AddDbContext<Context>();
+
             services.AddControllersWithViews();
+
+            services.AddSession();
+
             /*
              * Proje seviyesinde authorization iþlemleri
              * **/
-
-            services.AddSession();
             services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -38,9 +50,6 @@ namespace Paradise54
                                 .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
-
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,9 +66,12 @@ namespace Paradise54
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseSession();
 
@@ -67,6 +79,12 @@ namespace Paradise54
 
             app.UseEndpoints(endpoints =>
             {
+                // Area kullanýmý yönlendirmesi için eklendi
+                endpoints.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
