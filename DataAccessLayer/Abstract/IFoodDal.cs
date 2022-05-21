@@ -12,9 +12,9 @@ namespace DataAccessLayer.Abstract
         List<Food> GetListwithCategory();
 
         List<Food> GetListwithCategoryWithFilter(List<Food> foods, string catName);
-
-
         List<Food> SearchFoods(string searchItem);
+
+        List<Food> GetRelatedFoods(int foodId);
     }
 
 }

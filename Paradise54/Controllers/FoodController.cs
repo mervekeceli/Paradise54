@@ -70,7 +70,7 @@ namespace Paradise54.Controllers
                 f.Type = myDeserializedClass[i].Type;
                 f.CategoryId= GetCategory(myDeserializedClass[i].Category).Id;
                 f.Active = myDeserializedClass[i].Active;
-                f.Note = "NULL";
+                
 
                 fm.TAdd(f);
             }

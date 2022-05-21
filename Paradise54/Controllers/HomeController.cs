@@ -35,11 +35,15 @@ namespace Paradise54.Controllers
 
         public IActionResult FoodDetails(int foodId, int tableNum)
         {
-            var cart = cm.GetCartListFilter(tableNum);
+            List<Food> foods = fm.GetListRelatedFoods(foodId);//Sepete niye ihtiyac duyuluyor
+            //var cart = cm.GetCartListFilter(tableNum);
             Food food = fm.GetById(foodId);
-            ViewBag.MasaId = cart.TableId;
             if (food == null) return NotFound();
-            return View(food);
+            foods.Add(food);
+            ViewBag.MasaId = tableNum;
+           
+
+            return View(foods);
         }
 
         public IActionResult Foods(string? catName,string? searchItem)
@@ -66,7 +70,7 @@ namespace Paradise54.Controllers
             return View(values);
         }
 
-        public IActionResult SearchProducts(string searchItem)
+        public IActionResult SearchProducts(string searchItem)//Kullanilmiyor
         {
             var foods = fm.GetSearchFoods(searchItem);
             return View(foods);
@@ -74,7 +78,7 @@ namespace Paradise54.Controllers
 
 
 
-        public IActionResult AddFoodToCart(int foodId, int tableNum)
+        public IActionResult AddFoodToCart(int foodId, int tableNum,string? content)
         {
             var cart = cm.GetById(tableNum);
             Food currentFood = fm.GetById(foodId);
@@ -88,6 +92,7 @@ namespace Paradise54.Controllers
                 {
                     CartId = cart.Id,
                     FoodId = currentFood.Id,
+                    Note="NULL",//yarin degisecek
                     Active = true
                 };
                 cim.TAdd(newCartItem);
@@ -107,6 +112,7 @@ namespace Paradise54.Controllers
                 {
                     CartId = newCart.Id,
                     FoodId = currentFood.Id,
+                    Note = "NULL",//yarin degisecek
                     Active = true
                 };
                 cim.TAdd(newCartItem);

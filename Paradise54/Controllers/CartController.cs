@@ -58,6 +58,8 @@ namespace Paradise54.Controllers
 
             return View();
         }
+
+        [HttpPost]
         public IActionResult Order(int cartId)
         {
 
@@ -99,7 +101,29 @@ namespace Paradise54.Controllers
 
             return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
         }
+        [HttpPost]
+        public IActionResult RemoveFromCart(int foodId, int cartId)
+        {
+            Cart cart = cm.GetById(cartId);
 
-        
+            if (cart != null)
+            {
+                CartItem cartItem = cim.GetCartItemFoodCartIncludeFilterCartItems(cartId, foodId);
+
+                if (cartItem != null)
+                {
+                    cartItem.Active = false;
+                    cim.TUpdate(cartItem);
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
+        }
+
+
     }
 }

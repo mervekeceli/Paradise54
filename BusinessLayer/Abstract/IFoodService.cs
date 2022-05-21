@@ -16,7 +16,7 @@ namespace BusinessLayer.Abstract
 
         List<Food> GetSearchFoods(string searchItem);
 
-        
+        List<Food> GetListRelatedFoods(int foodId);
 
     }
 }

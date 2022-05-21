@@ -29,6 +29,5 @@ namespace EntityLayer.Concrete
 
         public Category Category { get; set; }
 
-        public string Note { get; set; }
     }
 }

@@ -35,6 +35,15 @@ namespace DataAccessLayer.EntityFramework
                 return c.Foods.Include(x=>x.Category).Where(x => x.Name.ToLower().Contains(searchItem.ToLower())).ToList();
             }
         }
+        public List<Food> GetRelatedFoods(int foodId)
+        {
+            using (var c=new Context())
+            {
+                Food f=c.Foods.Include(x => x.Category).Where(x => x.Id == foodId).First();
+
+                return c.Foods.Include(x => x.Category).Where(x => x.Category.Id==f.Category.Id).Take(3).ToList();
+            }
+        }
 
     }
 }

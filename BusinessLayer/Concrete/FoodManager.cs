@@ -63,5 +63,11 @@ namespace BusinessLayer.Concrete
         {
             return _foodDal.TExists(x => x.Id == id);
         }
+        public List<Food> GetListRelatedFoods(int foodId)
+        {
+            return _foodDal.GetRelatedFoods(foodId);
+        }
+
+        
     }
 }

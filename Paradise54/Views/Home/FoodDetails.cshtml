@@ -1,7 +1,11 @@
-﻿@model EntityLayer.Concrete.Food
+﻿@*@model EntityLayer.Concrete.Food*@
+@model List<EntityLayer.Concrete.Food>
 @{
     ViewData["Title"] = "FoodDetails";
     Layout = "~/Views/Shared/UserLayout.cshtml";
+
+    var food = Model.Last();
+
 }
 
 <!-- bredcrumb Area Start-->
@@ -38,7 +42,7 @@
                     <div class="product-thumbnail-wrapper">
                         <div class="single-thumbnail-slider">
                             <div class="slider-item">
-                                <img src="@Model.Photo" alt="item">
+                                <img src="@food.Photo" alt="item">
                             </div>
                         </div>
                         <div class="product-thumbnail-carousel">
@@ -49,15 +53,15 @@
             </div>
             <div class="col-md-6">
                 <div class="shop-item-details">
-                    <h2 class="entry-title">@Model.Name</h2>
+                    <h2 class="entry-title">@food.Name</h2>
                     <div class="row">
                         <div class="col-lg-6 order-lg-last align-self-center">
                         </div>
                         <div class="col-lg-6 align-self-center">
-                            <h4 class="price">₺ @Model.Price</h4>
+                            <h4 class="price">₺ @food.Price</h4>
                         </div>
                     </div>
-                    <p class="mt-4">@Model.Ingredients </p>
+                    <p class="mt-4">@food.Ingredients </p>
 
                     <div class="col-lg-12">
                         <form asp-action="AddFoodToCart" asp-controller="Home" method="get">
@@ -65,12 +69,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="single-textarea-wrap">
-                                        <textarea rows="4" placeholder="Sipariş Notunuzu Giriniz..." ></textarea>
+                                        <textarea name="content" rows="4" placeholder="Sipariş Notunuzu Giriniz..."></textarea>
                                     </div>
                                 </div>
                             </div>
 
-                            <a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@Model.Id&tableNum=@ViewBag.MasaId">Sepete Ekle</a>
+                            <a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@food.Id&tableNum=@ViewBag.MasaId">Sepete Ekle</a>
                         </form>
                     </div>
 
@@ -130,73 +134,46 @@
                     <h2 class="title">Related Products</h2>
                 </div>
                 <div class="related-product-slider owl-carousel style-2">
-                    <div class="item">
-                        <div class="single-item-wrap">
-                            <div class="thumb">
-                                <img src="~/restaurantTheme/assets/img/product/pizza/1.png" alt="img">
-                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                            </div>
-                            <div class="wrap-details">
-                                <h5><a href="single-product.html">Margherita Pizza</a></h5>
-                                <div class="wrap-footer">
-                                    <h6 class="price">$17.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-item-wrap">
-                            <div class="thumb">
-                                <img src="~/restaurantTheme/assets/img/product/pizza/2.png" alt="img">
-                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                            </div>
-                            <div class="wrap-details">
-                                <h5><a href="single-product.html">Maxican Pizza Test Better</a></h5>
-                                <div class="wrap-footer">
-                                    <div class="rating">
-                                        4.9
-                                        <span class="rating-inner">
-                                            <i class="ri-star-fill ps-0"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-line pe-0"></i>
-                                        </span>
-                                        (928)
+                    @{
+                        var count = 0;
+
+                        foreach (var item in Model)
+                        {
+                            if (count != Model.Count() - 1)
+                            {
+                                <div class="item">
+                                    <div class="single-item-wrap">
+                                        <div class="thumb">
+                                            <img src="@item.Photo" alt="img">
+                                            <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                                        </div>
+                                        <div class="wrap-details">
+                                            <h5><a href="#">@item.Name</a></h5>@*//Formsuz Href calismayabilir*@
+                                            <div class="wrap-footer">
+                                                <div class="rating">
+                                                    4.9
+                                                    <span class="rating-inner">
+                                                        <i class="ri-star-fill ps-0"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-half-line pe-0"></i>
+                                                    </span>
+                                                    (928)
+                                                </div>
+                                                <h6 class="price">@item.Price TL</h6>
+                                            </div>
+                                            <div class="btn-area">
+                                                <a href="FoodDetails?foodId=@item.Id&tableNum=@ViewBag.MasaId" class="btn btn-secondary" >Ürüne Git </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h6 class="price">$29.00</h6>
                                 </div>
-                                <div class="btn-area">
-                                    <a class="btn btn-secondary" href="single-product.html">CHOOSE OPTIONS </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="single-item-wrap">
-                            <div class="thumb">
-                                <img src="~/restaurantTheme/assets/img/product/burger/1.png" alt="img">
-                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                            </div>
-                            <div class="wrap-details">
-                                <h5><a href="single-product.html">Patty Buns Burgers</a></h5>
-                                <div class="wrap-footer">
-                                    <div class="rating">
-                                        4.9
-                                        <span class="rating-inner">
-                                            <i class="ri-star-fill ps-0"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-line pe-0"></i>
-                                        </span>
-                                        (462)
-                                    </div>
-                                    <h6 class="price">$27.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            }
+                            count++;
+                        }
+                      }
+                                
                 </div>
             </div>
         </div>
