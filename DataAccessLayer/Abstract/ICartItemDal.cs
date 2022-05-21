@@ -12,5 +12,7 @@ namespace DataAccessLayer.Abstract
         public List<CartItem> GetListwithFoodCartIncludeFilter(int tableNum);
 
         public List<CartItem> ListwithFoodCartIdIncludeFilterCartItems(int cartId);
+
+        public CartItem CartItemFoodCartIncludeFilterCartItems(int cartId, int foodId);
     }
 }

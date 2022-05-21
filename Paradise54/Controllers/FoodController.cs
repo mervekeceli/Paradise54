@@ -70,6 +70,7 @@ namespace Paradise54.Controllers
                 f.Type = myDeserializedClass[i].Type;
                 f.CategoryId= GetCategory(myDeserializedClass[i].Category).Id;
                 f.Active = myDeserializedClass[i].Active;
+                f.Note = "NULL";
 
                 fm.TAdd(f);
             }
@@ -102,7 +103,7 @@ namespace Paradise54.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Name,Photo,Price,Stock,Ingredients,Type,Active")] Food food)
+        public IActionResult Create([Bind("Id,Name,Photo,Price,Stock,Ingredients,Type,Active,Note")] Food food)
         {
             if (ModelState.IsValid)
             {

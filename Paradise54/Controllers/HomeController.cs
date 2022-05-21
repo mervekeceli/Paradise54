@@ -33,9 +33,13 @@ namespace Paradise54.Controllers
             return View();
         }
 
-        public IActionResult FoodDetails()
+        public IActionResult FoodDetails(int foodId, int tableNum)
         {
-            return View();
+            var cart = cm.GetCartListFilter(tableNum);
+            Food food = fm.GetById(foodId);
+            ViewBag.MasaId = cart.Id;
+            if (food == null) return NotFound();
+            return View(food);
         }
 
         public IActionResult Foods(string? catName,string? searchItem)

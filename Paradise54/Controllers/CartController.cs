@@ -18,12 +18,14 @@ namespace Paradise54.Controllers
         FoodManager fm = new FoodManager(new EfFoodRepository());
         CartManager cm = new CartManager(new EfCartRepository());
         CartItemManager cim = new CartItemManager(new EfCartItemRepository());
+        TableManager tm = new TableManager(new EfTableRepository());
 
 
         public IActionResult Index(int tableNum)
         {
             Cart cart = cm.GetCartListFilter(tableNum);
-
+            Table table = tm.GetById(tableNum);
+            table.Status = "DOLU";
 
             if (cart == null)
             {
@@ -81,7 +83,7 @@ namespace Paradise54.Controllers
                            
                         }
 
-                        return RedirectToAction("Index", "Cart");
+                        return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
                     }
 
                     _food.Stock = _food.Stock - 1;
@@ -90,12 +92,12 @@ namespace Paradise54.Controllers
                 }
 
                 cart.Active = false;
-                cart.Status = "TAMAMLANDI";
+                cart.Status = "SIPARIS";
                 cm.TUpdate(cart);
 
             }
 
-            return RedirectToAction("Index", "Cart");
+            return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
         }
 
         

@@ -30,5 +30,13 @@ namespace DataAccessLayer.EntityFramework
 
             }
         }
+        public CartItem CartItemFoodCartIncludeFilterCartItems(int cartId, int foodId)
+        {
+            using (var c = new Context())
+            {
+                return c.CartItems.Where(x => x.CartId == cartId && x.FoodId == foodId && x.Active == true).FirstOrDefault();
+
+            }
+        }
     }
 }
