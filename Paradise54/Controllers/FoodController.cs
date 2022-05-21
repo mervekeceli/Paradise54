@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Paradise54.Controllers
 {
-    
+    [AllowAnonymous]
     public class FoodController : Controller
     {
         FoodManager fm = new FoodManager(new EfFoodRepository());

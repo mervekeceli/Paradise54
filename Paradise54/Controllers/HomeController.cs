@@ -37,7 +37,7 @@ namespace Paradise54.Controllers
         {
             var cart = cm.GetCartListFilter(tableNum);
             Food food = fm.GetById(foodId);
-            ViewBag.MasaId = cart.Id;
+            ViewBag.MasaId = cart.TableId;
             if (food == null) return NotFound();
             return View(food);
         }
