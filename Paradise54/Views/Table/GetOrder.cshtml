@@ -1,0 +1,72 @@
+﻿@using EntityLayer.Concrete
+@model List<CartItem>
+@{
+    ViewData["Title"] = "GetOrder";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Ürünler</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Ürünler</a></li>
+                    <li class="breadcrumb-item active"><a href="/Food/Index">Index</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Ürünler</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th style="width:80px;"><strong>#</strong></th>
+                                        <th><strong>ÜRÜN ADI</strong></th>
+                                        <th><strong>KATEGORİ ADI</strong></th>
+                                        <th><strong>MÜŞTERİ NOTU</strong></th>
+                                        <th><strong>FİYAT</strong></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+                                            <td><strong>@item.Id</strong></td>
+                                            <td><div class="d-flex align-items-center"><img src="@item.Food.Photo" class="rounded-lg mr-2" width="24" alt="" /> <span class="w-space-no">@item.Food.Name</span></div></td>
+                                            <td>@item.Food.Active</td>
+                                            <td>@item.Note</td>
+                                            <td>₺ @item.Food.Price</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->

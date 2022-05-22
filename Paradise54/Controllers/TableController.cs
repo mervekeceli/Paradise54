@@ -14,9 +14,36 @@ namespace Paradise54.Controllers
     public class TableController : Controller
     {
         TableManager tm = new TableManager(new EfTableRepository());
+        CartItemManager cim = new CartItemManager(new EfCartItemRepository());
         public IActionResult Index()
         {
+           // List<CartItem> cartItems; // cim.GetCartItemListwithFoodCartIncludeFilter(tableNum);
+
+                //if (cartItems.Count != 0)
+                //{
+                //    ViewData["ToplamFiyat"] = cartItems.Sum(x => x.Food.Price);
+                //    ViewData["CartID"] = cartItems[0].CartId;
+                //    return View(cartItems);
+                //}
+
             var values = tm.GetList();
+            List<double> totalPrice=new List<double>();
+            for(int i=0;i<values.Count();i++)
+            {
+                List<CartItem> cartItems=cim.GetCartItemListwithFoodCartIncludeFilter(values[i].Id);
+                if (cartItems.Count != 0)
+                {
+                    totalPrice.Add(cartItems.Sum(x => x.Food.Price));
+                }
+                //ViewBag.TotalPrice[i] = totalPrice[i];
+            }
+            return View(values);
+        }
+
+        /* Masa detayı görüntüleme fonksiyonu **/
+        public IActionResult GetOrder(int tableId)
+        {
+            var values = cim.GetOrderListwithFoodCartIncludeFilter2(tableId);
             return View(values);
         }
         public IActionResult Details(int id)

@@ -72,5 +72,10 @@ namespace BusinessLayer.Concrete
         {
             return _cartItemDal.GetOrders(deneme);
         }
+
+        public List<CartItem> GetOrderListwithFoodCartIncludeFilter2(int tableNum)
+        {
+            return _cartItemDal.GetOrderListwithFoodCartIncludeFilter(tableNum);
+        }
     }
 }

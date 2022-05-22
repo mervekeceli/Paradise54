@@ -21,6 +21,15 @@ namespace DataAccessLayer.EntityFramework
                     .Where(x => x.Cart.TableId == tableNum && x.Cart.Active == true && x.Active == true).ToList();
             }
         }
+
+        public List<CartItem> GetOrderListwithFoodCartIncludeFilter(int tableNum)
+        {
+            using (var c = new Context())
+            {
+                return c.CartItems.Include(x => x.Cart).Include(x => x.Food)
+                    .Where(x => x.Cart.TableId == tableNum && x.Cart.Active == false && x.Active == true).ToList();
+            }
+        }
         public List<CartItem> ListwithFoodCartIdIncludeFilterCartItems(int cartId)
         {
             using (var c = new Context())

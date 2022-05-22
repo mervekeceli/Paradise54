@@ -20,41 +20,47 @@
 
             @foreach (var item in Model)
             {
+                int i = 0;
                 if (item.Status == "BOS")
                 {
                     <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="widget-stat card bg-success">
                             <div class="card-body p-4">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="mr-3">
-                                            <i class="flaticon-381-calculator"></i>
-                                        </span>
-                                        <div class="media-body text-white text-right">
-                                            <p class="mb-1">@item.Name</p>
-                                            <h3 class="text-white">₺ 100</h3>
+                                <form asp-action="GetOrder" asp-controller="Table">
+                                    <a href="/Table/GetOrder?tableId=@item.Id">
+                                        <div class="media">
+                                            <span class="mr-3">
+                                                <i class="flaticon-381-calculator"></i>
+                                            </span>
+                                            <div class="media-body text-white text-right">
+                                                <p class="mb-1">@item.Name</p>
+                                                <h3 class="text-white">₺ @ViewBag.totalPrice[i]</h3>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    i++;
                 }
                 else{
                     <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="widget-stat card bg-danger">
                             <div class="card-body p-4">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="mr-3">
-                                            <i class="flaticon-381-calculator"></i>
-                                        </span>
-                                        <div class="media-body text-white text-right">
-                                            <p class="mb-1">@item.Name</p>
-                                            <h3 class="text-white">₺ 100</h3>
+                                <form asp-action="GetOrder" asp-controller="Table">
+                                    <a href="/Table/GetOrder?tableId=@item.Id">
+                                        <div class="media">
+                                            <span class="mr-3">
+                                                <i class="flaticon-381-calculator"></i>
+                                            </span>
+                                            <div class="media-body text-white text-right">
+                                                <p class="mb-1">@item.Name</p>
+                                                <h3 class="text-white">₺ @ViewBag.totalPrice</h3>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </form>
                             </div>
                         </div>
                     </div>

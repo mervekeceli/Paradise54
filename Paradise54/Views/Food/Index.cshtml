@@ -1,42 +1,93 @@
 ﻿@using EntityLayer.Concrete
 @model List<Food>
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-</head>
-<body>
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Yemek Adi</th>
-            <th>Yemek Turu</th>
-            <th>Fiyat</th>
-            <th>Malzeme</th>
-            <th>Kategori</th>
-            <th>Durum</th>
-            <th>Detay</th>
-            <th>Sil</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Type</td>
-                <td>@item.Price</td>
-                <td>@item.Category.Name</td>
-                <td>@item.Ingredients</td>
-                <td>@item.Active</td>
-                <td><a href="#" class="btn btn-warning">Detaylar</a></td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Ürünler</h4>
+                </div>
+            </div>
+            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Ürünler</a></li>
+                    <li class="breadcrumb-item active"><a href="/Food/Index">Index</a></li>
+                </ol>
+            </div>
+        </div>
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Ürünler</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md">
+                                <thead>
+                                    <tr>
+                                        <th style="width:80px;"><strong>#</strong></th>
+                                        <th><strong>ÜRÜN ADI</strong></th>
+                                        <th><strong>KATEGORİ ADI</strong></th>
+                                        <th><strong>STOK MİKTARI</strong></th>
+                                        <th><strong>DURUM</strong></th>
+                                        <th><strong>PRICE</strong></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+
+                                        <td><strong>@item.Id</strong></td>
+                                        <td><div class="d-flex align-items-center"><img src="@item.Photo" class="rounded-lg mr-2" width="24" alt="" /> <span class="w-space-no">@item.Name</span></div></td>
+                                        <td>@item.Category.Name</td>
+                                        <td>@item.Stock Adet</td>
+                                        @if (item.Active)
+                                        {
+                                            <td><span class="badge light badge-success">Aktif</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td><span class="badge light badge-danger">Pasif</span></td>
+                                        }
+
+                                        <td>₺ @item.Price</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-warning light sharp" data-toggle="dropdown">
+                                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24" /><circle fill="#000000" cx="5" cy="12" r="2" /><circle fill="#000000" cx="12" cy="12" r="2" /><circle fill="#000000" cx="19" cy="12" r="2" /></g></svg>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="#">Edit</a>
+                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    }
+                                        
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+    Content body end
+***********************************-->
