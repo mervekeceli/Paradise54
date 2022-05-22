@@ -71,10 +71,11 @@
                                     <div class="single-textarea-wrap">
                                         <input type="hidden" name="foodId" value="@food.Id"/>
                                         <input type="hidden" name="tableNum" value="@ViewBag.MasaId" />
-                                        <input type="text" name="content" placeholder="Sipariş Notunuzu Giriniz..." />
+                                        <input class="col-12" style="height: 100px; border: medium;" type="text" name="content" placeholder="Sipariş Notunuzu Giriniz..." />
                                     </div>
                                 </div>
                             </div>
+                            <br />
                             <button type="submit" class="btn btn-secondary" @*href="AddFoodToCart?foodId=@food.Id&tableNum=@ViewBag.MasaId"*@>Sepete Ekle</button>
                         </form>
                     </div>
@@ -132,7 +133,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="section-title mb-0">
-                    <h2 class="title">Related Products</h2>
+                    <h2 class="title">Benzer Ürünler</h2>
                 </div>
                 <div class="related-product-slider owl-carousel style-2">
                     @{
@@ -162,7 +163,7 @@
                                                     </span>
                                                     (928)
                                                 </div>
-                                                <h6 class="price">@item.Price TL</h6>
+                                                <h6 class="price">₺ @item.Price</h6>
                                             </div>
                                             <div class="btn-area">
                                                 <a href="FoodDetails?foodId=@item.Id&tableNum=@ViewBag.MasaId" class="btn btn-secondary" >Ürüne Git </a>
