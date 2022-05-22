@@ -92,7 +92,7 @@ namespace Paradise54.Controllers
                 {
                     CartId = cart.Id,
                     FoodId = currentFood.Id,
-                    Note="NULL",//yarin degisecek
+                    Note=content,//yarin degisecek
                     Active = true
                 };
                 cim.TAdd(newCartItem);
@@ -112,7 +112,7 @@ namespace Paradise54.Controllers
                 {
                     CartId = newCart.Id,
                     FoodId = currentFood.Id,
-                    Note = "NULL",//yarin degisecek
+                    Note = content,//yarin degisecek
                     Active = true
                 };
                 cim.TAdd(newCartItem);

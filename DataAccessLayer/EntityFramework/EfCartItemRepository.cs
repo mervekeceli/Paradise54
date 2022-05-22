@@ -38,5 +38,27 @@ namespace DataAccessLayer.EntityFramework
 
             }
         }
+        public List<CartItem> GetAllOrdersCartItems()
+        {
+            using (var c = new Context())
+            {
+                return c.CartItems.Include(x => x.Cart).Where(x => x.Cart.Status == "SIPARIS" && x.Active == true).ToList();/*.GroupBy(x=>x.CartId).Select(x=>new { CartId=x.Key, TotalPrice = x.Sum(g=>g.Food.Price)}).ToList();//Group by yapilabilir*/
+
+            }
+        }
+        public List<Orders> GetOrders(List<CartItem> deneme)
+        {
+            List<Orders> denemeList=new List<Orders>();
+            var list= deneme.GroupBy(x => x.CartId).Select(x => new { CartId = x.Key, Price = x.Sum(x => x.Food.Price) }).ToList();
+            for(int i=0;i<list.Count();i++)
+            {
+                Orders o = new Orders();
+                o.CartId = list[i].CartId;
+                o.Price = list[i].Price;
+                denemeList.Add(o);
+            }
+            return denemeList;
+            
+        }
     }
 }

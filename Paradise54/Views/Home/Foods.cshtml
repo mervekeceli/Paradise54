@@ -80,7 +80,9 @@
                                 </div>
                                 <div class="btn-area">
                                     <form asp-action="FoodDetails" asp-controller="Home" method="get">
-                                        <a type="submit" class="btn btn-secondary" href="FoodDetails?foodId=@item.Id&tableNum=@tablenum">Ürüne Git</a>
+                                        <input type="hidden" name="foodId" value="@item.Id" />
+                                        <input type="hidden" name="tableNum" value="@tablenum" />
+                                        <button type="submit" class="btn btn-secondary" @*href="FoodDetails?foodId=@item.Id&tableNum=@tablenum"*@>Ürüne Git</button>
                                     </form>
 
                                 </div>

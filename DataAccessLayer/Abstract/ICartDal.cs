@@ -10,5 +10,7 @@ namespace DataAccessLayer.Abstract
     public interface ICartDal : IGenericDal<Cart>
     {
         public Cart GetListFilter(int tableNum);
+
+        
     }
 }

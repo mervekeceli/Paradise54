@@ -69,12 +69,13 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="single-textarea-wrap">
-                                        <textarea name="content" rows="4" placeholder="Sipariş Notunuzu Giriniz..."></textarea>
+                                        <input type="hidden" name="foodId" value="@food.Id"/>
+                                        <input type="hidden" name="tableNum" value="@ViewBag.MasaId" />
+                                        <input type="text" name="content" placeholder="Sipariş Notunuzu Giriniz..." />
                                     </div>
                                 </div>
                             </div>
-
-                            <a type="submit" class="btn btn-secondary" href="AddFoodToCart?foodId=@food.Id&tableNum=@ViewBag.MasaId">Sepete Ekle</a>
+                            <button type="submit" class="btn btn-secondary" @*href="AddFoodToCart?foodId=@food.Id&tableNum=@ViewBag.MasaId"*@>Sepete Ekle</button>
                         </form>
                     </div>
 

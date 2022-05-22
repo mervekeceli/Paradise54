@@ -26,7 +26,7 @@ namespace Paradise54.Controllers
             Cart cart = cm.GetCartListFilter(tableNum);
             Table table = tm.GetById(tableNum);
             table.Status = "DOLU";
-
+            
             if (cart == null)
             {
                 Cart newCart = new Cart
@@ -101,6 +101,7 @@ namespace Paradise54.Controllers
 
             return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
         }
+
         [HttpPost]
         public IActionResult RemoveFromCart(int foodId, int cartId)
         {

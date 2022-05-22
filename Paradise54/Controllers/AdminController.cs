@@ -22,5 +22,12 @@ namespace Paradise54.Controllers
         {
             return PartialView();
         }
+
+        //public IActionResult AktifSiparisler()
+        //{
+        //    GetAllOrders(List < CartItem > deneme)
+        //    return View();
+        //}
+
     }
 }

@@ -14,5 +14,9 @@ namespace BusinessLayer.Abstract
         public List<CartItem> GetListwithFoodCartIdIncludeFilterCartItems(int cartId);
 
         public CartItem GetCartItemFoodCartIncludeFilterCartItems(int tableNum, int foodId);
+
+        public List<CartItem> GetListAllOrdersCartItems();
+
+        public List<Orders> GetAllOrders(List<CartItem> deneme);
     }
 }
