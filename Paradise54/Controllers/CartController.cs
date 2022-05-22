@@ -26,7 +26,8 @@ namespace Paradise54.Controllers
             Cart cart = cm.GetCartListFilter(tableNum);
             Table table = tm.GetById(tableNum);
             table.Status = "DOLU";
-            
+            tm.TUpdate(table);
+
             if (cart == null)
             {
                 Cart newCart = new Cart
@@ -36,7 +37,6 @@ namespace Paradise54.Controllers
                     TableId = tableNum
                 };
                 cm.TAdd(newCart);
-
             }
             else
             {
@@ -51,18 +51,12 @@ namespace Paradise54.Controllers
                 }
             }
 
-
-
-
-
-
             return View();
         }
 
         [HttpPost]
         public IActionResult Order(int cartId)
         {
-
             Cart cart = cm.GetById(cartId);
 
             if (cart != null)
@@ -84,7 +78,6 @@ namespace Paradise54.Controllers
                             fm.TUpdate(tmpFood);
                            
                         }
-
                         return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
                     }
 
@@ -98,7 +91,6 @@ namespace Paradise54.Controllers
                 cm.TUpdate(cart);
 
             }
-
             return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
         }
 
@@ -124,7 +116,5 @@ namespace Paradise54.Controllers
 
             return RedirectToAction("Index", "Cart", new { tableNum = cart.TableId });
         }
-
-
     }
 }

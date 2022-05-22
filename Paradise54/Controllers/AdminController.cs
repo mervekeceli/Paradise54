@@ -13,6 +13,9 @@ namespace Paradise54.Controllers
         {
             return View();
         }
+
+
+        #region PartialAdmin
         public PartialViewResult AdminPartialNav()
         {
             return PartialView();
@@ -22,6 +25,7 @@ namespace Paradise54.Controllers
         {
             return PartialView();
         }
+        #endregion
 
         //public IActionResult AktifSiparisler()
         //{

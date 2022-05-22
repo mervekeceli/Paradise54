@@ -11,6 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface IGenericDal<T> where T: class
     {
         List<T> GetListAll();
+
         void Insert(T t);
 
         void Delete(T t);

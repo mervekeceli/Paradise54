@@ -41,7 +41,6 @@ namespace Paradise54.Controllers
             if (food == null) return NotFound();
             foods.Add(food);
             ViewBag.MasaId = tableNum;
-           
 
             return View(foods);
         }
@@ -77,7 +76,6 @@ namespace Paradise54.Controllers
         }
 
 
-
         public IActionResult AddFoodToCart(int foodId, int tableNum,string? content)
         {
             var cart = cm.GetById(tableNum);
@@ -96,7 +94,6 @@ namespace Paradise54.Controllers
                     Active = true
                 };
                 cim.TAdd(newCartItem);
-
             }
             else
             {

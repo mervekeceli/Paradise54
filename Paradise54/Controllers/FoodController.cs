@@ -27,6 +27,8 @@ namespace Paradise54.Controllers
             var values = fm.GetFoodListWithCategory();
             return View(values);
         }
+
+
         public Category GetCategory(string categoryName)
         {
             
@@ -37,6 +39,8 @@ namespace Paradise54.Controllers
             }
             
         }
+
+
         public async Task<ViewResult> AddFoodwithAPIAsync()
         {
 
@@ -90,6 +94,7 @@ namespace Paradise54.Controllers
 
             return View(food);
         }
+
 
 
         [HttpGet]

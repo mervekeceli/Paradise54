@@ -21,8 +21,6 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
-        
-
         public List<Food> GetListwithCategoryWithFilter(List<Food> foods, string catName)
         {
             return foods.Where(x => x.Category.Name == catName).ToList();

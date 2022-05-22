@@ -1,34 +1,64 @@
 ﻿@using EntityLayer.Concrete
 @model List<Table>
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-</head>
-<body>
-    <table class="table table-bordered">
-        <tr>
-            <th>ID</th>
-            <th>Kategori Adi</th>
-            <th>Status</th>
-            <th>Detay</th>
-            <th>Sil</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.Active</td>
-                <td><a href="#" class="btn btn-warning">Detaylar</a></td>
-                <td><a href="#" class="btn btn-danger">Sil</a></td>
-            </tr>
-        }
-    </table>
-</body>
-</html>
+
+
+<div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="form-head d-flex mb-3 align-items-start">
+            <div class="mr-auto d-none d-lg-block">
+                <h2 class="text-black font-w600 mb-0">Masalar</h2>
+                <p class="mb-0">Paradise54 Admin!</p>
+            </div>
+
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                if (item.Status == "BOS")
+                {
+                    <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="widget-stat card bg-success">
+                            <div class="card-body p-4">
+                                <div class="media">
+                                    <span class="mr-3">
+                                        <i class="flaticon-381-calculator"></i>
+                                    </span>
+                                    <div class="media-body text-white text-right">
+                                        <p class="mb-1">@item.Name</p>
+                                        <h3 class="text-white">₺ 100</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="widget-stat card bg-danger">
+                            <div class="card-body p-4">
+                                <div class="media">
+                                    <span class="mr-3">
+                                        <i class="flaticon-381-calculator"></i>
+                                    </span>
+                                    <div class="media-body text-white text-right">
+                                        <p class="mb-1">@item.Name</p>
+                                        <h3 class="text-white">₺ 100</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+
+        </div>
+    </div>
+</div>
