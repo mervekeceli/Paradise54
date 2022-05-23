@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
+    
     public class EfCartItemRepository:GenericRepository<CartItem>,ICartItemDal
     {
        
@@ -31,6 +32,7 @@ namespace DataAccessLayer.EntityFramework
                     .Where(x => x.Cart.TableId == tableNum && x.Cart.Active == false && x.Active == true).ToList();
             }
         }
+        
         public List<CartItem> ListwithFoodCartIdIncludeFilterCartItems(int cartId)
         {
             using (var c = new Context())

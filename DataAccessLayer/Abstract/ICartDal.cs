@@ -11,6 +11,6 @@ namespace DataAccessLayer.Abstract
     {
         public Cart GetListFilter(int tableNum);
 
-        
+        public Cart GetCartwithTableId(int tableId);
     }
 }

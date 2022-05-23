@@ -20,7 +20,15 @@ namespace DataAccessLayer.EntityFramework
                .FirstOrDefault();
             }
         }
+        public Cart GetCartwithTableId(int tableId)
+        {
+            using (var c = new Context())
+            {
+                return c.Carts.Where(x => x.TableId == tableId && x.Active == true)
+               .FirstOrDefault();
+            }
+        }
 
-       
+
     }
 }

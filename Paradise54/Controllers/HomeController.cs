@@ -78,7 +78,7 @@ namespace Paradise54.Controllers
 
         public IActionResult AddFoodToCart(int foodId, int tableNum,string? content)
         {
-            var cart = cm.GetById(tableNum);
+            var cart = cm.GetCartwithTableId(tableNum);
             Food currentFood = fm.GetById(foodId);
 
             if (currentFood == null) return NotFound();

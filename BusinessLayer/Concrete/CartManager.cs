@@ -57,5 +57,9 @@ namespace BusinessLayer.Concrete
         {
             return _cartDal.TExists(x => x.Id == id);
         }
+        public Cart GetCartwithTableId(int tableId)
+        {
+            return _cartDal.GetCartwithTableId(tableId);
+        }
     }
 }
