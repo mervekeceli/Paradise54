@@ -5,7 +5,7 @@
 }
 
 
-<div class="container" style="margin-top: 120px;">
+@*<div class="container" style="margin-top: 120px;">
     <h1>Kategori Ekle</h1>
     <hr />
     <div class="row">
@@ -33,4 +33,111 @@
             </div>
         </div>
     </form>
+</div>*@
+
+
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="mr-auto d-none d-lg-block">
+                    <h2 class="text-black font-w600 mb-0">Ürün Ekle</h2>
+                    <p class="mb-0">Paradise54 Admin!</p>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Ürün Ekle</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            <form class="form-valide-with-icon" asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Id" />
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label" asp-for="Name">Ürün Adı*</label>
+                                        <input type="text" asp-for="Name" class="form-control" placeholder="Örnek: Tavuk Döner">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label" asp-for="Photo">Ürün Fotoğrafı*</label>
+                                        <input type="text" asp-for="Photo" class="form-control" placeholder="Url Olarak Giriniz">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label asp-for="CategoryId">Ürün Kategorisi</label>
+                                        <select class="form-control" asp-for="CategoryId" id="sel1">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label" asp-for="Ingredients">Ürün Açıklaması*</label>
+                                        <input type="text" asp-for="Ingredients" class="form-control" placeholder="Örnek: Lavaş, domates, patates, Hatay Sosu ve içecek ile birlikte" />
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label" asp-for="Price">Fiyat*</label>
+                                        <input type="text" asp-for="Price" class="form-control" placeholder="Örnek: 50">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label" asp-for="Stock">Stok Miktarı*</label>
+                                        <input type="number" asp-for="Stock" class="form-control" placeholder="Örnek: 100">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label asp-for="Type">Ürün Tipi</label>
+                                        <select class="form-control" id="sel1" asp-for="Type">
+                                            <option>Yiyecek</option>
+                                            <option>İçecek</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mb-2">
+                                    <div class="form-group">
+                                        <label asp-for="Active">Aktiflik</label>
+                                        <select class="form-control" id="sel1" asp-for="Active">
+                                            <option>True</option>
+                                            <option>False</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <input type="" value="Vazgeç" class="btn mr-2 btn-danger" />
+                                <button type="submit" class="btn mr-2 btn-success">Ekle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+<!--**********************************
+    Content body end
+***********************************-->

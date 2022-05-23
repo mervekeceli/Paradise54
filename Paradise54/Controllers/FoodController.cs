@@ -112,9 +112,9 @@ namespace Paradise54.Controllers
         {
             if (ModelState.IsValid)
             {
-                food.Active = true;
+                food.CategoryId = 1;
                 fm.TAdd(food);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","Food");
             }
             ViewData["CategoryId"] = new SelectList(cm.GetList().Where(x => x.Active == true), "Id", "Name", food.CategoryId);//Hatali bence
             return View(food);
