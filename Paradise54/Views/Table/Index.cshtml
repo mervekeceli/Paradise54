@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int i = 0;
 }
 
 
@@ -17,10 +18,10 @@
 
         </div>
         <div class="row">
-
+            
             @foreach (var item in Model)
             {
-                int i = 0;
+
                 if (item.Status == "BOS")
                 {
                     <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
@@ -34,7 +35,7 @@
                                             </span>
                                             <div class="media-body text-white text-right">
                                                 <p class="mb-1">@item.Name</p>
-                                                <h3 class="text-white">₺ @ViewBag.totalPrice[i]</h3>
+                                                <h3 class="text-white">₺ 0</h3>
                                             </div>
                                         </div>
                                     </a>
@@ -42,9 +43,10 @@
                             </div>
                         </div>
                     </div>
-                    i++;
+
                 }
-                else{
+                else
+                {
                     <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="widget-stat card bg-danger">
                             <div class="card-body p-4">
@@ -56,7 +58,7 @@
                                             </span>
                                             <div class="media-body text-white text-right">
                                                 <p class="mb-1">@item.Name</p>
-                                                <h3 class="text-white">₺ @ViewBag.totalPrice</h3>
+                                                <h3 class="text-white">₺@ViewBag.TotalPrice[i]</h3>
                                             </div>
                                         </div>
                                     </a>
@@ -64,6 +66,11 @@
                             </div>
                         </div>
                     </div>
+                    if (ViewBag.totalCount != i)
+                    {
+                        i++;
+                    }
+
                 }
             }
 

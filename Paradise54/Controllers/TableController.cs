@@ -30,13 +30,15 @@ namespace Paradise54.Controllers
             List<double> totalPrice=new List<double>();
             for(int i=0;i<values.Count();i++)
             {
-                List<CartItem> cartItems=cim.GetCartItemListwithFoodCartIncludeFilter(values[i].Id);
+                List<CartItem> cartItems=cim.GetOrderListwithFoodCartIncludeFilter2(values[i].Id);
                 if (cartItems.Count != 0)
                 {
                     totalPrice.Add(cartItems.Sum(x => x.Food.Price));
                 }
                 //ViewBag.TotalPrice[i] = totalPrice[i];
             }
+            ViewBag.TotalPrice = totalPrice;//dOGRU CALISIYOR.totalPrice[2] 3.MASANIN TOTALI DONUYOR
+            ViewBag.totalCount = (totalPrice.Count())-1;
             return View(values);
         }
 
