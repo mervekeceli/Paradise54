@@ -15,6 +15,7 @@ namespace Paradise54.Controllers
     {
         TableManager tm = new TableManager(new EfTableRepository());
         CartItemManager cim = new CartItemManager(new EfCartItemRepository());
+        CartManager cm = new CartManager(new EfCartRepository());
         public IActionResult Index()
         {
            // List<CartItem> cartItems; // cim.GetCartItemListwithFoodCartIncludeFilter(tableNum);
@@ -46,8 +47,11 @@ namespace Paradise54.Controllers
         public IActionResult GetOrder(int tableId)
         {
             var values = cim.GetOrderListwithFoodCartIncludeFilter2(tableId);
+            ViewBag.tableId = tableId;
             return View(values);
         }
+
+
         public IActionResult Details(int id)
         {
             //var mainCategory = await _context.MainCategories
@@ -57,14 +61,37 @@ namespace Paradise54.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(table);
         }
+
+
+        [HttpPost]
+        public IActionResult Payment(int tableId)
+        {
+            Cart cart = cm.GetCartByTablenum(tableId);
+            Table table = tm.GetById(tableId);
+            table.Status = "BOS";
+            tm.TUpdate(table);
+
+            
+            cart.Active = false;
+            cart.Status = "TAMAMLANDI";
+            cm.TUpdate(cart);
+
+            return RedirectToAction("Index", "Table");
+        }
+
+
+
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Table table)

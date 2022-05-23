@@ -36,83 +36,100 @@
     <div class="container">
         @if (Model != null)
         {
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="table-responsive mb-4">
-                        <table class="table">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="table-responsive mb-4">
+                    <table class="table">
 
-                            <thead>
-                                <tr>
-                                    <th class="blank"></th>
-                                    <th class="blank"></th>
-                                    <th class="blank"></th>
-                                    <th class="title-name">Ürünler</th>
-                                    <th scope="col">Fiyat</th>
-                                    <th scope="col">Adet</th>
-                                    <th>Toplam Fiyat</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <thead>
+                            <tr>
+                                <th class="blank"></th>
+                                <th class="blank"></th>
+                                <th class="blank"></th>
+                                <th class="title-name">Ürünler</th>
+                                <th scope="col">Fiyat</th>
+                                <th scope="col">Adet</th>
+                                <th>Toplam Fiyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                @if (Model.Any())
+                            @if (Model.Any())
+                            {
+                                @foreach (var item in Model)
                                 {
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <form asp-action="RemoveFromCart" asp-controller="Cart" method="post">
-                                                <input type="hidden" name="foodId" value="@item.FoodId" />
-                                                <input type="hidden" name="cartId" value="@item.CartId" />
-                                            <td class="table-close-btn"><button type="submit" @*href="RemoveFromCart?foodId=@item.FoodId&cartId=@item.CartId"*@><i class="ri-close-line"></i></button></td>
+                                    <tr>
+                                        <form asp-action="RemoveFromCart" asp-controller="Cart" method="post">
+                                            <input type="hidden" name="foodId" value="@item.FoodId" />
+                                            <input type="hidden" name="cartId" value="@item.CartId" />
+                                        <td class="table-close-btn"><button type="submit" @*href="RemoveFromCart?foodId=@item.FoodId&cartId=@item.CartId"*@><i class="ri-close-line"></i></button></td>
+                                        </form>
+
+                                        <th scope="row">
+
+                                            <div class="thumb">
+                                                <img src="@item.Food.Photo" style="width: auto; height: 90px;" alt="img">
+                                            </div>
+                                        </th>
+
+                                        <td colspan="2" class="item-name">
+                                            <div class="details">
+                                                <h5>@item.Food.Name</h5>
+                                            </div>
+                                        </td>
+
+                                        <td>₺ @item.Food.Price</td>
+
+                                        <td class="table-quantity">
+                                            <form>
+                                                <div class="quantity buttons_added">
+                                                    <input type="number" class="input-text qty text" step="1" min="1" max="10000" name="quantity" value="1">
+
+                                                </div>
                                             </form>
-
-                                            <th scope="row">
-
-                                                <div class="thumb">
-                                                    <img src="@item.Food.Photo" style="width: auto; height: 90px;" alt="img">
-                                                </div>
-                                            </th>
-
-                                            <td colspan="2" class="item-name">
-                                                <div class="details">
-                                                    <h5>@item.Food.Name</h5>
-                                                </div>
-                                            </td>
-
-                                            <td>₺ @item.Food.Price</td>
-
-                                            <td class="table-quantity">
-                                                <form>
-                                                    <div class="quantity buttons_added">
-                                                        <input type="number" class="input-text qty text" step="1" min="1" max="10000" name="quantity" value="1">
-
-                                                    </div>
-                                                </form>
-                                            </td>
-                                            <td>₺ @item.Food.Price</td>
-                                        </tr>
-                                    }
+                                        </td>
+                                        <td>₺ @item.Food.Price</td>
+                                    </tr>
                                 }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="order-cart-area">
-                        <div class="order-cart">
-                            <h5>SEPETİM</h5>
-                            <ul>
-                                <li class="total">Toplam Fiyat<span>₺ @ViewData["ToplamFiyat"]</span></li>
-                            </ul>
-                        </div>
-                        <form asp-controller="Cart" asp-action="Order" method="post">
-                            <button name="cartId" class="btn btn-secondary w-100" value="@ViewData["CartId"]">SİPARİŞİ ONAYLA</button>
-                        </form>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="col-lg-8">
+                <div class="promotional-area">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="single-input-wrap">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                            </div>
+                            <div class="col-md-4 col-sm-6 text-md-end">
+
+                                <form asp-action="Foods" asp-controller="Home">
+                                    <button type="submit" class="btn btn-base">ALIŞVERİŞE DÖN</button>
+                                    <input type="hidden" name="tablenum" value="@tablenum" />
+                                </form>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="order-cart-area">
+                    <div class="order-cart">
+                        <h5>SEPETİM</h5>
+                        <ul>
+                            <li class="total">Toplam Fiyat<span>₺ @ViewData["ToplamFiyat"]</span></li>
+                        </ul>
+                    </div>
+                    <form asp-controller="Cart" asp-action="Order" method="post">
+                        <button name="cartId" class="btn btn-secondary w-100" value="@ViewData["CartId"]">SİPARİŞİ ONAYLA</button>
+                    </form>
+                </div>
+            </div>
+        </div>
                 }
                 else
                 {

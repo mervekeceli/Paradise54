@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "QRCode";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<form asp-controller="Admin" asp-action="QRCode" method="post">
+    <div class="col-lg-12">QR kod masa adi gir</div>
+    <br />
+    <div class="col-lg-12">
+        <input type="text" name="QRCodeString" id="QRCodeString" class="form-control" />
+    </div>
+    <br />
+    <br />
+    <div class="col-lg-12">
+        <input type="submit" class="btn btn-primary" value="Generate QR Code" />
+    </div>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.URL))
+{
+<div class="col-lg-12">
+    <img src="@ViewBag.URL" />
+</div>}
+

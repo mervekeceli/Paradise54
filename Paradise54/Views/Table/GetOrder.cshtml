@@ -60,6 +60,10 @@
 
                                 </tbody>
                             </table>
+                            <form asp-action="Payment" asp-controller="Table" method="post">
+                                <button type="submit" class="btn btn-danger">Ödeme</button>
+                                <input type="hidden" name="tableId" value="@ViewBag.tableId"/>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Foods";
     Layout = "~/Views/Shared/UserLayout.cshtml";
-
+    int i= 1;
 }
 @{
     var tablenum = Context.Request.Query["tablenum"].ToString();
@@ -34,213 +34,88 @@
     </div>
 </section>
 <!-- breadcrumb Area End -->
-<!-- shop Area Start-->
-<section class="shop-area pd-top-120 pd-bottom-120">
+
+
+<!-- category Area Start-->
+<section class="category-area">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="row justify-content-center">
-                    <div class="col-sm-6 align-self-center pb-4">
-                        <p class="mb-0">Showing 1–8 of 12 results</p>
-                    </div>
-                    <div class="col-sm-6 align-self-center pb-4">
-                        <select class="single-select float-sm-end">
-                            <option>Kategoriler</option>
-                            <option value="asc"></option>
-                            <option value="desc">Burger</option>
-                            <option value="pop">Döner</option>
-                        </select>
-                    </div>
-
-
-                    @foreach (var item in Model)
+            <div class="col-lg-12 align-self-center">
+                <ul class="category-menu">
+                    
+                    @foreach (var item in ViewBag.Kategoriler)
                     {
-                        <div class="col-md-6">
-                            <div class="single-item-wrap">
-                                <div class="thumb">
-                                    <img src="@item.Photo" alt="img">
-                                    <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                                </div>
-                                <div class="wrap-details">
-                                    <h5><a href="single-product.html">@item.Name</a></h5>
-                                    <div class="wrap-footer">
-                                        <div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (200)
-                                        </div>
-                                        <h6 class="price">₺ @item.Price</h6>
-                                    </div>
-                                </div>
-                                <div class="btn-area">
-                                    <form asp-action="FoodDetails" asp-controller="Home" method="get">
-                                        <a type="submit" class="btn btn-secondary" href="FoodDetails?foodId=@item.Id&tableNum=@tablenum">Ürüne Git</a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div class="col-lg-4 order-lg-first">
-                <div class="sidebar-area">
-                    <div class="widget widget_search">
-                        <form class="search-form">
-                            <div class="form-group">
-                                <input type="text" placeholder="Search your itmes">
-                            </div>
-                            <button class="submit-btn" type="submit"><i class="ri-search-line"></i></button>
-                        </form>
-                    </div>
-                    <div class="widget widget_categories style-2">
-                        <h4 class="widget-title">Categories</h4>
-                        <ul>
-                            @foreach (var item in ViewBag.Kategoriler)
-                            {
 
-                                <li><a href="@Context.Request.GetDisplayUrl()?catName=@item"><img src="~/restaurantTheme/assets/img/category/2.png" alt="img">@item<span>(9)</span></a></li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="widget widget_filter">
-                        <h4 class="widget-title">Filter by Price</h4>
-                        <div class="side-bar-range">
-                            <div id="slider-range"></div>
-                            <div class="row g-0">
-                                <div class="col-lg-6 align-self-center">
-                                    <a class="btn btn-base" href="#">Filter</a>
-                                </div>
-                                <div class="col-lg-6 align-self-center">
-                                    <p>
-                                        Price:
-                                        <input type="text" id="amount" readonly>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="widget widget-recent-post style-2">
-                        <h4 class="widget-title">Today’s Best Deals</h4>
-                        <ul>
-                            <li>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="~/restaurantTheme/assets/img/widget/01.png" alt="widget">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="title"><a href="#">Patty Buns Burgers</a></h6>
-                                        <div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (462)
-                                        </div>
-                                        <h6 class="price">$29.00</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="~/restaurantTheme/assets/img/widget/02.png" alt="widget">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="title"><a href="#">Garlic Chicken Pizza</a></h6>
-                                        <div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (262)
-                                        </div>
-                                        <h6 class="price">$20.00</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="~/restaurantTheme/assets/img/widget/03.png" alt="widget">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="title"><a href="#">BBQ Chicken Pizza</a></h6>
-                                        <div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (262)
-                                        </div>
-                                        <h6 class="price">$27.00</h6>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="~/restaurantTheme/assets/img/widget/04.png" alt="widget">
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="title"><a href="#">Margherita Pizza</a></h6>
-                                        <div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (262)
-                                        </div>
-                                        <h6 class="price">$35.00</h6>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="d-block mb-5" href="#"><img class="w-100" src="~/restaurantTheme/assets/img/widget/ad.png" alt="img"></a>
-                </div>
-            </div>
-            <div class="col-12">
-                <nav class="text-end">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="ri-arrow-left-s-line"></i>
-                            </a>
+                        <li class="category-wrap">
+                            <a href="@Context.Request.GetDisplayUrl()?catName=@item"><img src="~/restaurantTheme/assets/img/category/1.png" alt="category">@item</a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                        i++;
+                    }
+                </ul>
             </div>
         </div>
     </div>
 </section>
-<!-- shop Area End -->
+<!-- category Area End -->
+
+<!-- populer Area Start-->
+<section class="populer-area pd-top-50 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-item-wrap">
+                        <div class="thumb">
+                            <img src="@item.Photo" alt="img">
+                            <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                        </div>
+                        <div class="wrap-details">
+                            <h5><a href="single-product.html">@item.Name</a></h5>
+                            <div class="wrap-footer">
+                                <div class="rating">
+                                    4.9
+                                    <span class="rating-inner">
+                                        <i class="ri-star-fill ps-0"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-line pe-0"></i>
+                                    </span>
+                                    (200)
+                                </div>
+                                <h6 class="price">₺ @item.Price</h6>
+                            </div>
+                        </div>
+                        <div class="btn-area">
+                            <form asp-action="FoodDetails" asp-controller="Home" method="get">
+                                <a type="submit" class="btn btn-secondary" href="FoodDetails?foodId=@item.Id&tableNum=@tablenum">Ürüne Git</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            }
+                <div class="col-12">
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="ri-arrow-left-s-line"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="ri-arrow-right-s-line"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    </div>
+</section>
+<!-- populer Area End -->
