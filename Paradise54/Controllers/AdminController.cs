@@ -37,6 +37,7 @@ namespace Paradise54.Controllers
         {
             var writer = new QRCodeWriter();
             var resultBit = writer.encode(formCollection["QRCodeString"], ZXing.BarcodeFormat.QR_CODE, 200, 200);
+            
             var matrix = resultBit;
             int scale = 2;
             Bitmap result = new Bitmap(matrix.Width * scale, matrix.Height * scale);
@@ -54,9 +55,15 @@ namespace Paradise54.Controllers
                     }
                 }
             }
+            string QR = formCollection["QRCodeString"];//TABLENUMA KADAR GIT 
+            
+            //paradise54.com/Home/Foods?tablenum=1
+            string[] subs = QR.Split('?');
+            string[] subs2 = subs[1].Split('=');
+
             string webRootPath = _hostEnviroment.WebRootPath;
-            result.Save(webRootPath + "\\Images\\QrcodeNew.png");
-            ViewBag.URL = "\\Images\\QrcodeNew.png";
+            result.Save(webRootPath + "\\Images\\"+subs2[1]+".png");
+            ViewBag.URL = "\\Images\\"+ subs2[1] + ".png";
             return View();
         }
 
