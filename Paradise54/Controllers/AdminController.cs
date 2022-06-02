@@ -25,8 +25,13 @@ namespace Paradise54.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult QRCode()
+        {
+            return View();
+        }
 
-
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult QRCode(IFormCollection formCollection)
         {
