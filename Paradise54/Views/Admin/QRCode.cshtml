@@ -4,42 +4,69 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
+
+<!--**********************************
+            Content body start
+        ***********************************-->
 <div class="content-body">
-    <!-- row -->
     <div class="container-fluid">
         <div class="form-head d-flex mb-3 align-items-start">
             <div class="mr-auto d-none d-lg-block">
-                <h2 class="text-black font-w600 mb-0">Dashboard</h2>
+                <h2 class="text-black font-w600 mb-0">QR Oluşturma</h2>
                 <p class="mb-0">Paradise54 Admin!</p>
             </div>
         </div>
+        <!-- row -->
 
         <div class="row">
-            <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
-                <form asp-controller="Admin" asp-action="QRCode" method="post">
-                    <div class="col-lg-12">QR kod masa adi gir</div>
-                    <br />
-                    <div class="col-lg-12">
-                        <input type="text" name="QRCodeString" id="QRCodeString" class="form-control" />
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">QR Kod Ekle</h4>
+                            </div>
+                            <div class="card-body">
+                                <div id="morris_donught" class="morris_chart_height">
+                                    <form asp-controller="Admin" asp-action="QRCode" method="post">
+                                        <div class="col-lg-12">
+                                            <label>QR Kod Masa Adı</label>
+                                            <input type="text" name="QRCodeString" id="QRCodeString" class="form-control" />
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <div class="col-lg-12">
+                                            <input type="submit" class="btn btn-primary" value="Generate QR Code" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br />
-                    <br />
-                    <div class="col-lg-12">
-                        <input type="submit" class="btn btn-primary" value="Generate QR Code" />
+                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">QR Kod</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="new-arrival-product">
+                                    <div class="new-arrivals-img-contnent">
+                                        @if (!string.IsNullOrEmpty(ViewBag.URL))
+                                        {
+                                            <div class="col-lg-12">
+                                                <img src="@ViewBag.URL" />
+                                            </div>}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </form>
 
-            </div>
-            <div class="col-xl-3 col-xxl-3 col-lg-6 col-md-6 col-sm-6">
-                @if (!string.IsNullOrEmpty(ViewBag.URL))
-                {
-                    <div class="col-lg-12">
-                        <img src="@ViewBag.URL" />
-                    </div>}
-
+                </div>
             </div>
         </div>
     </div>
-
 </div>
-
+<!--**********************************
+    Content body end
+***********************************-->
