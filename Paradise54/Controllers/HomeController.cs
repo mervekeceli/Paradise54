@@ -30,7 +30,8 @@ namespace Paradise54.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            // Yönlendirmeyi giriş sayfasına yapıyor
+            return Redirect("/Login/Index");
         }
 
         public IActionResult FoodDetails(int foodId, int tableNum)

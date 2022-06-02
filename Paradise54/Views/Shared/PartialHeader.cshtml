@@ -13,39 +13,14 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="themefie_main_menu">
-                <ul class="navbar-nav menu-open">
-                    <li>
-                        <a href="home-1.html">ANA SAYFA</a>
-                    </li>
-                    <li class="current-menu-item menu-item-has-children">
-                        <a href="#">Sayfalar</a>
-                        <ul class="sub-menu ps-0">
-                            <li><a href="about.html">Hakkımızda</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="blog-details.html">Blog Detayları</a></li>
-                            <li><a href="menu.html">Menu</a></li>
-                            <li><a href="cart.html">Sepet</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="about.html">Hakkımızda</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">İletişim</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="logo">
-                <a class="main-logo" href="home-1.html"><img src="~/restaurantTheme/assets/img/logo.png" alt="img"></a>
+                <div class="logo">
+                    <a class="main-logo" href="home-1.html"><img src="~/restaurantTheme/assets/img/logo.png" alt="img"></a>
+                </div>
             </div>
             <div class="nav-right-part nav-right-part-mobile">
                 <ul>
                     <li>
                         <a class="search" href="#"><i class="ri-search-line"></i></a>
-                    </li>
-                    <li class="phone-contact d-md-block d-none">
-                        <i class="ri-phone-fill float-start"></i>
-                        +90 555 555 5555
                     </li>
                     <form asp-action="Index" asp-controller="Cart" method="get">
                         <input type="hidden" name="tableNum" value="@tablenum" />
@@ -58,10 +33,6 @@
                 <ul>
                     <li>
                         <a class="search" href="#"><i class="ri-search-line"></i></a>
-                    </li>
-                    <li class="phone-contact">
-                        <i class="ri-phone-fill float-start"></i>
-                        +90 555 555 5555
                     </li>
                     <form asp-action="Index" asp-controller="Cart" method="get">
                        <input type="hidden" name="tableNum" value="@tablenum"/>
