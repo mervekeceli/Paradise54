@@ -1,4 +1,7 @@
-﻿<!-- navbar start -->
+﻿@{
+    var tablenum = Context.Request.Query["tablenum"].ToString();
+}
+<!-- navbar start -->
 <header class="navbar-area">
     <nav class="navbar navbar-expand-lg">
         <div class="container nav-container">
@@ -44,8 +47,11 @@
                         <i class="ri-phone-fill float-start"></i>
                         +90 555 555 5555
                     </li>
-                    <li class="menu-cart"><a href="cart.html">SEPET <span>1</span></a></li>
+                    <form asp-action="Index" asp-controller="Cart" method="get">
+                        <input type="hidden" name="tableNum" value="@tablenum" />
+                    <li class="menu-cart"><button class="btn btn-warning" type="submit">SEPET</button></li>
                     
+                    </form>
                 </ul>
             </div>
             <div class="nav-right-part nav-right-part-desktop">
@@ -57,7 +63,10 @@
                         <i class="ri-phone-fill float-start"></i>
                         +90 555 555 5555
                     </li>
-                    <li class="menu-cart"><a href="cart.html">SEPET <span>1</span></a></li>
+                    <form asp-action="Index" asp-controller="Cart" method="get">
+                       <input type="hidden" name="tableNum" value="@tablenum"/>
+                    <li class="menu-cart"><button class="btn btn-warning" type="submit">SEPET</button></li>@*//url HATASI*@
+                    </form>
                 </ul>
             </div>
         </div>
