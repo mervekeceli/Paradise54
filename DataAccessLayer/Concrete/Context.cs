@@ -13,8 +13,9 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("server=MSI;database=paradis9_paradise54Db;integrated security=true;");
-            optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=ParadiseYeni54Db;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=MSI;database=paradis9_paradise54Db;integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=ParadiseYeni54Db;integrated security=true;");
+            //optionsBuilder.UseSqlServer("server=176.53.69.151\\MSSQLSERVER2019;database=paradis9_paradise54Db;user=paradis9_admindb;password=H18uwk^86");
         }
         public DbSet<Food> Foods { get; set; }
 

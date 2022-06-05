@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +17,7 @@ namespace Paradise54.Controllers
     public class AdminController : Controller
     {
         private readonly IWebHostEnvironment _hostEnviroment;
+        CartItemManager cim = new CartItemManager(new EfCartItemRepository());
 
         public AdminController(IWebHostEnvironment hostEnviroment)
         {
@@ -22,7 +26,15 @@ namespace Paradise54.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<CartItem> cartItems = new List<CartItem>();
+            cartItems = cim.GetListDoneOrders();
+            double totalPrice=0;
+            foreach(var item in cartItems)
+            {
+                totalPrice+=item.Food.Price;
+            }
+            ViewBag.TotalPrice = totalPrice;
+            return View(cartItems);
         }
 
         [HttpGet]

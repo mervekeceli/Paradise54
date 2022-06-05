@@ -77,5 +77,10 @@ namespace BusinessLayer.Concrete
         {
             return _cartItemDal.GetOrderListwithFoodCartIncludeFilter(tableNum);
         }
+        public List<CartItem> GetListDoneOrders()
+        {
+            return _cartItemDal.GetDoneOrders();
+        }
     }
+
 }

@@ -20,5 +20,7 @@ namespace DataAccessLayer.Abstract
         public List<CartItem> GetAllOrdersCartItems();
 
         public List<Orders> GetOrders(List<CartItem> deneme);
+
+        public List<CartItem> GetDoneOrders();
     }
 }

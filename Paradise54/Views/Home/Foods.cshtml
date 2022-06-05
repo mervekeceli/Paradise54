@@ -42,13 +42,23 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 align-self-center">
                 <ul class="category-menu">
-                    
+
                     @foreach (var item in ViewBag.Kategoriler)
                     {
-                        <li class="category-wrap">
-                            <a href="@Context.Request.GetDisplayUrl()&catName=@item"><img src="~/restaurantTheme/assets/img/category/5.png" alt="category">@item</a>
-                        </li>
-                        i++;
+                        if (i <= 6)
+                        {
+                            <li class="category-wrap">
+                                <a href="@Context.Request.GetDisplayUrl()&catName=@item"><img src="~/restaurantTheme/assets/img/category/5.png" alt="category">@item</a>
+                            </li>
+                            i++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+
+
                     }
                 </ul>
             </div>

@@ -72,5 +72,13 @@ namespace DataAccessLayer.EntityFramework
             return denemeList;
             
         }
+        public List<CartItem> GetDoneOrders()
+        {
+            using (var c = new Context())
+            {
+                return c.CartItems.Include(x => x.Cart).Include(x=>x.Food).Where(x => x.Cart.Status == "TAMAMLANDI").ToList(); 
+
+            }
+        }
     }
 }

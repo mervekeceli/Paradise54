@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Food>
+﻿@*@model IEnumerable<EntityLayer.Concrete.Food>*@
 @{ 
     int i = 1;
 }
@@ -65,14 +65,14 @@
                     <div class="footer-widget widget widget_instagram_feeds">
                         <h4 class="widget-title">Bazı Ürünlerimiz</h4>
                         <ul>
-                            @foreach (var item in Model)
+                            @*@foreach (var item in Model)
                             {
                                 if (i <= 9)
                                 {
                                     <li><a href="#"><img src="@item.Photo" alt="instagram" /></a></li>
                                 }
                                 i++;
-                            }
+                            }*@
 
                             @*<li><a href="#"><img src="~/restauranttheme/assets/img/instagram/2.png" alt="instagram" /></a></li>
         <li><a href="#"><img src="~/restauranttheme/assets/img/instagram/3.png" alt="instagram" /></a></li>

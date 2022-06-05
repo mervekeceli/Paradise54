@@ -21,5 +21,7 @@ namespace BusinessLayer.Abstract
         public List<CartItem> GetListAllOrdersCartItems();
 
         public List<Orders> GetAllOrders(List<CartItem> deneme);
+
+        public List<CartItem> GetListDoneOrders();
     }
 }
