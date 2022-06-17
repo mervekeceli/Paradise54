@@ -18,37 +18,22 @@ dotnet ef database update
 ## 📷 Screenshots
 
 <div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(42).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(43).png" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/urunler.jpg" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/urunEkle.jpg" width="400px;" alt=""/>
 </div>
 <div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(44).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(45).png" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/masa.jpg" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/masaGoruntule.jpg" width="400px;" alt=""/>
 </div>
 <div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(58).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(59).png" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/urun.jpg" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/benzerUrunler.jpg" width="400px;" alt=""/>
 </div>
 <div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(57).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(46).png" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/productSingle.jpg" width="400px;" alt=""/>
+  <img src="https://github.com/mervekeceli/Paradise54/blob/master/img/sepet.jpg" width="400px;" alt=""/>
 </div>
-<div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(47).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(48).png" width="400px;" alt=""/>
-</div>
-<div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(49).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(50).png" width="400px;" alt=""/>
-</div>
-<div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(51).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(52).png" width="400px;" alt=""/>
-</div>
-<div style="display: flex; width: 1000px; justify-content: space-evenly;">
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(53).png" width="400px;" alt=""/>
-  <img src="https://github.com/SuleAktas/BrandStore/blob/main/img/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(54).png" width="400px;" alt=""/>
-</div>
+
 
 ## 🎯 Contributors
 <table>
